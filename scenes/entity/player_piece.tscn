@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1vm1vmbay2x7"]
+
+[ext_resource type="Texture2D" uid="uid://bc25phqb6y322" path="res://assets/sprites/entity/placeholder_player_pawn.png" id="1_2jta7"]
+
+[node name="PlayerPiece" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2jta7")
