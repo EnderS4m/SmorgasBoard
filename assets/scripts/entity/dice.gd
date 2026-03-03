@@ -2,16 +2,24 @@ extends AnimatedSprite2D
 
 @onready var dice = $"."
 
-var oldFrame: int = 0
+# What ye be rollin'
 var result: int = 0
+# Lerp Weight
+var progress: float = 0.0
 
-# Called when the node enters the scene tree for the first time.
+# What the dice should scale up to when changing frames
+var scaleUp: float = 1.25
+
 func _ready():
 	dice.frame = randi_range(0,5)
-	oldFrame = dice.frame
-	dice.play("diceRoll",1.5)
+	dice.play("diceRoll",1)
+	
+func _process(_delta):
+	scale = Vector2(lerpf(1,scaleUp,progress),lerpf(1,scaleUp,progress))
+	if progress > 0.0:
+		progress -= 0.1
 
 func _on_frame_changed():
 	dice.frame = randi_range(0,5)
 	result = dice.frame + 1
-	print(result)
+	progress = 1
