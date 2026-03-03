@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dug2kgqgvg4bu"]
+[gd_scene load_steps=3 format=3 uid="uid://dug2kgqgvg4bu"]
 
 [ext_resource type="PackedScene" uid="uid://1vm1vmbay2x7" path="res://scenes/entity/player_piece.tscn" id="1_elqb8"]
+[ext_resource type="PackedScene" uid="uid://dplfoqijp7lxg" path="res://scenes/entity/dice.tscn" id="2_rvslj"]
 
 [node name="Main" type="Node2D"]
 
 [node name="PlayerPiece" parent="." instance=ExtResource("1_elqb8")]
+
+[node name="Dice" parent="PlayerPiece" instance=ExtResource("2_rvslj")]
+position = Vector2(0, -53)
 
 [node name="Camera2D" type="Camera2D" parent="."]

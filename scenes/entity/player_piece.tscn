@@ -2,7 +2,5 @@
 
 [ext_resource type="Texture2D" uid="uid://bc25phqb6y322" path="res://assets/sprites/entity/placeholder_player_pawn.png" id="1_2jta7"]
 
-[node name="PlayerPiece" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerPiece" type="Sprite2D"]
 texture = ExtResource("1_2jta7")

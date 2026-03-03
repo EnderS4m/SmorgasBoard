@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://dplfoqijp7lxg"]
+
+[ext_resource type="Texture2D" uid="uid://cms8o7jbnuw03" path="res://assets/sprites/entity/dice.png" id="1_cb4la"]
+[ext_resource type="Script" uid="uid://d1cvisbmiotwy" path="res://assets/scripts/entity/dice.gd" id="2_2ws8x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ws8x"]
+atlas = ExtResource("1_cb4la")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh6tn"]
+atlas = ExtResource("1_cb4la")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnswe"]
+atlas = ExtResource("1_cb4la")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnlf4"]
+atlas = ExtResource("1_cb4la")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8cdg"]
+atlas = ExtResource("1_cb4la")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ngp"]
+atlas = ExtResource("1_cb4la")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnq31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ws8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh6tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnswe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnlf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8cdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50ngp")
+}],
+"loop": true,
+"name": &"diceRoll",
+"speed": 5.0
+}]
+
+[node name="Dice" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fnq31")
+animation = &"diceRoll"
+script = ExtResource("2_2ws8x")
+
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
