@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://1vm1vmbay2x7"]
+[gd_scene load_steps=3 format=3 uid="uid://1vm1vmbay2x7"]
 
 [ext_resource type="Texture2D" uid="uid://bc25phqb6y322" path="res://assets/sprites/entity/placeholder_player_pawn.png" id="1_2jta7"]
+[ext_resource type="Script" uid="uid://dp1pov208kqkb" path="res://scripts/entity/player_piece.gd" id="2_t2i5i"]
 
 [node name="PlayerPiece" type="Sprite2D"]
 texture = ExtResource("1_2jta7")
+script = ExtResource("2_t2i5i")

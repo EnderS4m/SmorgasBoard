@@ -11,3 +11,5 @@
 position = Vector2(0, -53)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="dice_result" from="PlayerPiece/Dice" to="PlayerPiece" method="_on_dice_dice_result"]
