@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://1vm1vmbay2x7"]
+[gd_scene load_steps=4 format=3 uid="uid://1vm1vmbay2x7"]
 
 [ext_resource type="Texture2D" uid="uid://bc25phqb6y322" path="res://assets/sprites/entity/placeholder_player_pawn.png" id="1_2jta7"]
 [ext_resource type="Script" uid="uid://dp1pov208kqkb" path="res://scripts/entity/player_piece.gd" id="2_t2i5i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2i5i"]
+size = Vector2(20, 27)
+
 [node name="PlayerPiece" type="Sprite2D"]
 texture = ExtResource("1_2jta7")
 script = ExtResource("2_t2i5i")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_t2i5i")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

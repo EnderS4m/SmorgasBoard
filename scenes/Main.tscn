@@ -5,11 +5,11 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="PlayerPiece" parent="." instance=ExtResource("1_elqb8")]
-
-[node name="Dice" parent="PlayerPiece" instance=ExtResource("2_rvslj")]
+[node name="Dice" parent="." instance=ExtResource("2_rvslj")]
 position = Vector2(0, -53)
+
+[node name="PlayerPiece" parent="." instance=ExtResource("1_elqb8")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[connection signal="dice_result" from="PlayerPiece/Dice" to="PlayerPiece" method="_on_dice_dice_result"]
+[connection signal="dice_result" from="Dice" to="PlayerPiece" method="_on_dice_dice_result"]

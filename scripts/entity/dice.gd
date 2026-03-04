@@ -13,7 +13,7 @@ var scaleUp: float = 1.25
 
 func _ready():
 	dice.frame = randi_range(0,5)
-	dice.play("diceRoll",1)
+	dice.play("diceRoll",0.75)
 	
 func _process(delta):
 	scale = Vector2(lerpf(1,scaleUp,progress),lerpf(1,scaleUp,progress))
