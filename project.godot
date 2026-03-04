@@ -33,6 +33,11 @@ window/stretch/mode="canvas_items"
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="PlayerPiece"
+2d_physics/layer_2="AllowedBoardTile"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

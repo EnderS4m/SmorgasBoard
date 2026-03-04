@@ -1,4 +1,5 @@
 extends Camera2D
+signal camModeSignal(mode: int)
 
 enum camModes {
 	PLAYERCAM,
@@ -10,6 +11,7 @@ var activeCamMode
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	activeCamMode = camModes.PLAYERCAM
+	camModeSignal.emit(activeCamMode)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
