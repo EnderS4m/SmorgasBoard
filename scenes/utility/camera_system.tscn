@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhro8ynh38ub0"]
+
+[ext_resource type="Script" uid="uid://cypnin717jowf" path="res://scripts/utility/camera_system.gd" id="1_0d7at"]
+[ext_resource type="Texture2D" uid="uid://bc25phqb6y322" path="res://assets/sprites/entity/placeholder_player_pawn.png" id="2_vd7gn"]
+
+[node name="CameraSystem" type="Camera2D"]
+position_smoothing_enabled = true
+script = ExtResource("1_0d7at")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_vd7gn")

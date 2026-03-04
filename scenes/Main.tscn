@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dug2kgqgvg4bu"]
+[gd_scene load_steps=4 format=3 uid="uid://dug2kgqgvg4bu"]
 
 [ext_resource type="PackedScene" uid="uid://1vm1vmbay2x7" path="res://scenes/entity/player_piece.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://dplfoqijp7lxg" path="res://scenes/entity/dice.tscn" id="2_rvslj"]
+[ext_resource type="PackedScene" uid="uid://dhro8ynh38ub0" path="res://scenes/utility/camera_system.tscn" id="3_0bbpv"]
 
 [node name="Main" type="Node2D"]
 
@@ -10,6 +11,7 @@ position = Vector2(0, -53)
 
 [node name="PlayerPiece" parent="." instance=ExtResource("1_elqb8")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CameraSystem" parent="." instance=ExtResource("3_0bbpv")]
 
 [connection signal="dice_result" from="Dice" to="PlayerPiece" method="_on_dice_dice_result"]
+[connection signal="player_home" from="PlayerPiece" to="CameraSystem" method="_on_player_home_update"]
