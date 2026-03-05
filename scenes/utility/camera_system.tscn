@@ -7,6 +7,7 @@
 position_smoothing_enabled = true
 script = ExtResource("1_0d7at")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DebugVis" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 0, 1, 1)
 texture = ExtResource("2_vd7gn")

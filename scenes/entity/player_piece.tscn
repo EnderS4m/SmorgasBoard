@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dp1pov208kqkb" path="res://scripts/entity/player_piece.gd" id="2_t2i5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2i5i"]
-size = Vector2(20, 27)
+size = Vector2(10, 27)
 
 [node name="PlayerPiece" type="Sprite2D"]
 texture = ExtResource("1_2jta7")

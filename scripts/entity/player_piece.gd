@@ -56,12 +56,18 @@ func handleDraggingSprite(speed: Variant):
 	if selected:
 		position = get_global_mouse_position()
 	else:
+		# If we are on a tile we are allowed to move to,
+		# Update the home position to be *that* tile
+		# Duh
 		if onLegalTile:
 			homePos = touchingArea2D.global_position
 			player_home.emit(homePos)
 		# This forces the peice to return to its home position
 		position = lerp(position,homePos,speed)
 
+# TODO: Make sure to ONLY update these variables IF the
+# area is a board tile!!!! Don't wanna be changing the home
+# position to be on the dice, now, do we?
 func _on_area_2d_area_entered(area):
 	onLegalTile = true
 	touchingArea2D = area

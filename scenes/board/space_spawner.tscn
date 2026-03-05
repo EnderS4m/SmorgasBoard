@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsfgxdg0pdvwy"]
+
+[ext_resource type="Script" uid="uid://cupk3ihaxcq7v" path="res://scripts/board/space_spawner.gd" id="1_hpsko"]
+
+[node name="SpaceSpawner" type="Node2D"]
+script = ExtResource("1_hpsko")

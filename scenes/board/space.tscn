@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce7u7gpnqhd1c"]
+
+[ext_resource type="Texture2D" uid="uid://dsx27fbqdkygy" path="res://assets/sprites/board/placeholder_spacePoints.png" id="1_2ty0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm7s3"]
+size = Vector2(42, 46)
+
+[node name="Space" type="Sprite2D"]
+z_index = -10
+texture = ExtResource("1_2ty0w")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_dm7s3")
