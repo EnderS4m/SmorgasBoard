@@ -58,4 +58,6 @@ sprite_frames = SubResource("SpriteFrames_fnq31")
 animation = &"diceRoll"
 script = ExtResource("2_2ws8x")
 
+[node name="RollTimer" type="Timer" parent="."]
+
 [connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
