@@ -32,17 +32,17 @@ var scaleUp: float = 1.25
 var waiting: bool = false
 
 func _ready():
+	dice_result.emit(result)
 	curState = state.IDLE
 	
 func _process(delta):
 	if curState == state.IDLE:
 		idle(1)
-	if curState == state.ROLLING:
-		dice.stop()
 	scaleEffect(delta)
 
 func _on_frame_changed():
 	result = dice.get_frame() + 1
+	progress = 1
 	dice_result.emit(result)
 
 func scaleEffect(delta):
@@ -56,15 +56,29 @@ func idle(delay: float):
 	if !waiting:
 		progress = 1
 		waiting = true
-		dice.frame = randi_range(0,5)
+		diceFrameChange()
 		await get_tree().create_timer(delay).timeout
 		waiting = false
 
-# TODO: Dice starts out rolling super fast and then slows down.
+# Dice starts out rolling super fast and then slows down.
 # When dice rolling is fully slowed down, switch to the RESULT state, and
 # stand by for further instructions
 func _on_roll_dice():
+	var rollFrames: int = 250
+	var rollFramesMod: float = 1.0
+	
 	curState = state.ROLLING
-	for i in range(0,10):
-		print(i)
-		await get_tree().create_timer(1).timeout
+	while rollFrames > 0:
+		rollFrames -= 1
+		
+		if rollFrames % int(floor(rollFramesMod)) == 0:
+			progress = 1
+			diceFrameChange()
+			rollFramesMod += 0.25
+			
+		await get_tree().create_timer(0.025).timeout
+		
+	curState = state.RESULT
+
+func diceFrameChange():
+	dice.frame = randi_range(0,5)
