@@ -5,7 +5,7 @@ extends Node2D
 
 var boardLength: int = 10
 var spaceSpace: int = 54
-var spaceRise: int = 27
+var spaceRise: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +19,6 @@ func _ready():
 		add_sibling.call_deferred(space)
 		position.x += spaceSpace
 		position.y += spaceRise
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

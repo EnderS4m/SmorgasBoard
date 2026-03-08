@@ -25,22 +25,24 @@ var progress: float = 0.0
 # What the dice should scale up to when changing frames
 var scaleUp: float = 1.25
 
+# For the idle() function, mostly because Godot is freaking stupid
+# sometimes why can't I just call a function in the _process()
+# function and have that be just one call of the function that can't
+# interrupt itself raaaaaaaahhhhhhhhhhhhhh
+var waiting: bool = false
+
 func _ready():
 	curState = state.IDLE
-	dice.frame = randi_range(0,5)
 	
 func _process(delta):
-	result = dice.frame - 1
-	
 	if curState == state.IDLE:
-		idle(0.25)
-		
+		idle(1)
+	if curState == state.ROLLING:
+		dice.stop()
 	scaleEffect(delta)
 
 func _on_frame_changed():
-	if curState == state.IDLE or curState == state.ROLLING:
-		dice.frame = randi_range(0,5)
-		progress = 1
+	result = dice.get_frame() + 1
 	dice_result.emit(result)
 
 func scaleEffect(delta):
@@ -48,5 +50,21 @@ func scaleEffect(delta):
 	if progress > 0.0:
 		progress -= 0.1 * delta * 60
 
-func idle(animSpeed: float):
-	dice.play("diceRoll",animSpeed)
+# This is meant to be entirely cosmetic but it's probably important
+# to note that the result variable DOES get updated during the IDLE state
+func idle(delay: float):
+	if !waiting:
+		progress = 1
+		waiting = true
+		dice.frame = randi_range(0,5)
+		await get_tree().create_timer(delay).timeout
+		waiting = false
+
+# TODO: Dice starts out rolling super fast and then slows down.
+# When dice rolling is fully slowed down, switch to the RESULT state, and
+# stand by for further instructions
+func _on_roll_dice():
+	curState = state.ROLLING
+	for i in range(0,10):
+		print(i)
+		await get_tree().create_timer(1).timeout

@@ -69,8 +69,9 @@ func handleDraggingSprite(speed: Variant):
 # area is a board tile!!!! Don't wanna be changing the home
 # position to be on the dice, now, do we?
 func _on_area_2d_area_entered(area):
-	onLegalTile = true
-	touchingArea2D = area
+	if selected:
+		onLegalTile = true
+		touchingArea2D = area
 
 func _on_area_2d_area_exited(_area):
 	onLegalTile = false

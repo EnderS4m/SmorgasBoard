@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dug2kgqgvg4bu"]
+[gd_scene load_steps=7 format=3 uid="uid://dug2kgqgvg4bu"]
 
 [ext_resource type="PackedScene" uid="uid://1vm1vmbay2x7" path="res://scenes/entity/player_piece.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://dplfoqijp7lxg" path="res://scenes/entity/dice.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://dhro8ynh38ub0" path="res://scenes/utility/camera_system.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://bsfgxdg0pdvwy" path="res://scenes/board/space_spawner.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://dq7vfuyce7fep" path="res://scenes/ui/button_roll_dice.tscn" id="5_vcsgt"]
+[ext_resource type="Script" uid="uid://bw1pd0ijjq1pe" path="res://scenes/delete_this_later.gd" id="6_c01mt"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,5 +18,19 @@ position = Vector2(0, -53)
 
 [node name="SpaceSpawner" parent="." instance=ExtResource("4_rarhs")]
 
+[node name="Button_RollDice" parent="." instance=ExtResource("5_vcsgt")]
+offset_top = -115.0
+offset_bottom = -83.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -20.0
+offset_top = -161.0
+offset_right = 20.0
+offset_bottom = -121.0
+text = "###"
+script = ExtResource("6_c01mt")
+
 [connection signal="dice_result" from="Dice" to="PlayerPiece" method="_on_dice_dice_result"]
+[connection signal="dice_result" from="Dice" to="RichTextLabel" method="_on_dice_dice_result"]
 [connection signal="player_home" from="PlayerPiece" to="CameraSystem" method="_on_player_home_update"]
+[connection signal="rollDice" from="Button_RollDice" to="Dice" method="_on_roll_dice"]
