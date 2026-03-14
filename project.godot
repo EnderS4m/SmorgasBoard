@@ -13,17 +13,39 @@ config_version=5
 config/name="SmorgasBoard"
 run/main_scene="uid://dug2kgqgvg4bu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+run/max_fps=120
+boot_splash/use_filter=false
+boot_splash/image="uid://dsx27fbqdkygy"
+config/icon="uid://bc25phqb6y322"
+
+[autoload]
+
+Config="*res://scripts/utility/config.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/size/resizable=false
-window/size/window_width_override=1280
-window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://assets/sprites/board/": "orange",
+"res://assets/sprites/entity/": "yellow",
+"res://assets/sprites/ui/": "green",
+"res://scenes/": "purple",
+"res://scenes/board/": "orange",
+"res://scenes/entity/": "yellow",
+"res://scenes/ui/": "green",
+"res://scripts/": "blue",
+"res://scripts/board/": "orange",
+"res://scripts/entity/": "yellow",
+"res://scripts/ui/": "green"
+}
 
 [input]
 

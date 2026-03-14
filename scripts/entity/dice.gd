@@ -64,7 +64,7 @@ func idle(delay: float):
 # When dice rolling is fully slowed down, switch to the RESULT state, and
 # stand by for further instructions
 func _on_roll_dice():
-	var rollFrames: int = 250
+	var rollFrames: int = 125
 	var rollFramesMod: float = 1.0
 	
 	curState = state.ROLLING
