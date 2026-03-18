@@ -3,7 +3,7 @@ extends Node2D
 @onready var player = $"../PlayerPiece"
 @onready var spaceScene = preload("res://scenes/board/space.tscn")
 
-var boardLength: int = 10
+var boardLength: int = 20
 var spaceSpace: int = 54
 var spaceRise: int = 0
 

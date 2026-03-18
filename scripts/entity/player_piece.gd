@@ -2,6 +2,7 @@ extends Sprite2D
 signal player_home(home: Vector2)
 
 @onready var player = $"."
+@onready var camera = $"../CameraSystem"
 
 var result: int = 0
 
@@ -16,15 +17,19 @@ var hoverScaleFactor: float = 1.25
 
 var homePos: Vector2
 
+var camMode: int
+
 func _ready():
 	baseScale = scale
 	homePos = position
+	player_home.emit(homePos)
+	camera.camModeSignal.connect(_get_cam_mode)
 
 func _process(_delta):
 	# The player piece will smoothly scale up with the mouse pointer is
 	# hovering over the sprite, but not if the sprite is currently
 	# being dragged around
-	if mouseHovered and not selected:
+	if mouseHovered and not selected and camMode != 1:
 		scale = ((baseScale * hoverScaleFactor) / 2) + (scale / 2)
 	else:
 		scale = (baseScale / 2) + (scale / 2)
@@ -34,7 +39,7 @@ func _process(_delta):
 # For dragging the sprite around
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if Input.is_action_just_pressed("Left Click"):
+		if Input.is_action_just_pressed("Left Click") and camMode != 1:
 			selected = not selected
 	pass
 
@@ -76,3 +81,6 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(_area):
 	onLegalTile = false
 	touchingArea2D = null
+
+func _get_cam_mode(mode: int):
+	camMode = mode

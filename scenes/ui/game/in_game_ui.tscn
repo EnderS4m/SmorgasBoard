@@ -1,16 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://c82jq644xg2g1"]
+[gd_scene load_steps=13 format=3 uid="uid://c82jq644xg2g1"]
 
 [ext_resource type="Texture2D" uid="uid://exwq8kh7ghpu" path="res://assets/sprites/ui/Pause/Button_Pause.png" id="1_eeonk"]
+[ext_resource type="Theme" uid="uid://ddofu4jxronpk" path="res://assets/theme/in_game_ui.tres" id="1_hutgv"]
 [ext_resource type="Texture2D" uid="uid://b2o0jcduasnoo" path="res://assets/sprites/ui/Pause/Button_Pause_Pressed.png" id="2_qvqbd"]
 [ext_resource type="Texture2D" uid="uid://soikxycls7f0" path="res://assets/sprites/ui/Pause/Button_Pause_Hover.png" id="3_3nhwc"]
 [ext_resource type="Texture2D" uid="uid://ca4hehkv2vefm" path="res://assets/sprites/ui/Camera/Button_Camera.png" id="4_5y6qm"]
+[ext_resource type="Script" uid="uid://b48n1oad60slp" path="res://scripts/ui/game/pause_button.gd" id="4_feqb0"]
 [ext_resource type="Texture2D" uid="uid://dlhx46qsbbo5c" path="res://assets/sprites/ui/Camera/Button_Camera_Pressed.png" id="5_spc33"]
 [ext_resource type="Texture2D" uid="uid://duaukid8a2w3e" path="res://assets/sprites/ui/Camera/Button_Camera_Hovered.png" id="6_8o238"]
 [ext_resource type="PackedScene" uid="uid://dq7vfuyce7fep" path="res://scenes/ui/game/button_roll_dice.tscn" id="7_8o238"]
 [ext_resource type="Script" uid="uid://brclg2ix7li7a" path="res://scripts/ui/game/camera_button.gd" id="7_oscxt"]
 [ext_resource type="PackedScene" uid="uid://dplfoqijp7lxg" path="res://scenes/entity/dice.tscn" id="8_s3j3l"]
+[ext_resource type="PackedScene" uid="uid://clgyk7wb2kos5" path="res://scenes/ui/game/pause_menu.tscn" id="12_nu7ib"]
 
 [node name="InGameUI" type="CanvasLayer"]
+
+[node name="DiceButtons" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 97.0
+offset_right = 32.0
+offset_bottom = 137.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_hutgv")
+
+[node name="Button_RollDice" parent="DiceButtons" instance=ExtResource("7_8o238")]
+layout_mode = 2
+
+[node name="Dice" parent="DiceButtons/Button_RollDice" instance=ExtResource("8_s3j3l")]
+position = Vector2(32, -40)
 
 [node name="UtilityButtons" type="BoxContainer" parent="."]
 process_mode = 3
@@ -29,6 +50,10 @@ layout_mode = 2
 texture_normal = ExtResource("1_eeonk")
 texture_pressed = ExtResource("2_qvqbd")
 texture_hover = ExtResource("3_3nhwc")
+script = ExtResource("4_feqb0")
+
+[node name="PauseMenu" parent="UtilityButtons/PauseButton" instance=ExtResource("12_nu7ib")]
+layer = 999
 
 [node name="CameraButton" type="TextureButton" parent="UtilityButtons"]
 layout_mode = 2
@@ -37,22 +62,7 @@ texture_pressed = ExtResource("5_spc33")
 texture_hover = ExtResource("6_8o238")
 script = ExtResource("7_oscxt")
 
-[node name="DiceButtons" type="VBoxContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_top = 93.0
-offset_right = 32.0
-offset_bottom = 133.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-
-[node name="Button_RollDice" parent="DiceButtons" instance=ExtResource("7_8o238")]
-layout_mode = 2
-
-[node name="Dice" parent="DiceButtons/Button_RollDice" instance=ExtResource("8_s3j3l")]
-position = Vector2(32, -29)
-
-[connection signal="pressed" from="UtilityButtons/CameraButton" to="UtilityButtons/CameraButton" method="_on_pressed"]
 [connection signal="rollDice" from="DiceButtons/Button_RollDice" to="DiceButtons/Button_RollDice/Dice" method="_on_roll_dice"]
+[connection signal="pressed" from="UtilityButtons/PauseButton" to="UtilityButtons/PauseButton" method="_on_pressed"]
+[connection signal="button_up" from="UtilityButtons/CameraButton" to="UtilityButtons/CameraButton" method="_on_button_up"]
+[connection signal="pressed" from="UtilityButtons/CameraButton" to="UtilityButtons/CameraButton" method="_on_pressed"]

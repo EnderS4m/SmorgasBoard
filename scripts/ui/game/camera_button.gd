@@ -13,8 +13,10 @@ func _process(_delta):
 	pass
 
 func _on_pressed():
-	changeMode.emit()
-	print(camMode)
+	pass
 
 func _get_cam_mode(mode: int):
 	camMode = mode
+
+func _on_button_up():
+	changeMode.emit()

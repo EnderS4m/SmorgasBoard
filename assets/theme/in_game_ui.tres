@@ -1,0 +1,98 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://ddofu4jxronpk"]
+
+[ext_resource type="FontFile" uid="uid://bg414g8acsv43" path="res://assets/fonts/BoredGame.ttf" id="1_8d6ot"]
+[ext_resource type="Texture2D" uid="uid://bq4oyv7oshv4j" path="res://assets/sprites/ui/Atlas/ui_atlas.png" id="1_upf3r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hu4iy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4mex"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hu4iy"]
+texture = ExtResource("1_upf3r")
+texture_margin_left = 4.067634
+texture_margin_top = 4.067634
+texture_margin_right = 3.9576979
+texture_margin_bottom = 7.6955237
+region_rect = Rect2(80, 0, 64, 32)
+modulate_color = Color(1.0789914, 1.0789914, 1.0789914, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcaoj"]
+texture = ExtResource("1_upf3r")
+texture_margin_left = 3.9825764
+texture_margin_top = 3.9910963
+texture_margin_right = 3.9919264
+texture_margin_bottom = 8.000347
+region_rect = Rect2(80, 0, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4mex"]
+texture = ExtResource("1_upf3r")
+texture_margin_left = 3.9827652
+texture_margin_top = 3.997867
+texture_margin_right = 3.9882176
+texture_margin_bottom = 4.0004134
+region_rect = Rect2(80, 48, 64, 28)
+modulate_color = Color(0.73, 0.73, 0.73, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8d6ot"]
+texture = ExtResource("1_upf3r")
+texture_margin_left = 5.0942163
+texture_margin_top = 5.054726
+texture_margin_right = 4.9809856
+texture_margin_bottom = 11.998549
+region_rect = Rect2(0, 0, 64, 64)
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 6
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_8d6ot")
+Button/styles/disabled = SubResource("StyleBoxFlat_hu4iy")
+Button/styles/focus = SubResource("StyleBoxFlat_j4mex")
+Button/styles/hover = SubResource("StyleBoxTexture_hu4iy")
+Button/styles/normal = SubResource("StyleBoxTexture_lcaoj")
+Button/styles/pressed = SubResource("StyleBoxTexture_j4mex")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_8d6ot")
