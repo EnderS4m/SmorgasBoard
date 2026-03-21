@@ -4,23 +4,13 @@ signal hideMenu()
 
 var tween
 
-@onready var resume = $PanelContainer/VBoxContainer/ResumeButton
-@onready var menu = $PanelContainer/VBoxContainer/MenuButton
-@onready var settings = $PanelContainer/VBoxContainer/SettingsButton
-
-@onready var settings_menu = $"../../../../SettingsMenu"
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	showMenu.connect(_show_menu)
 	hideMenu.connect(_hide_menu)
-	resume.button_up.connect(_hide_menu)
-	menu.button_up.connect(_main_menu)
-	settings.button_up.connect(_settings_menu)
 
 func _show_menu():
 	visible = true
-	resume.disabled = false
 	offset.y = 350 * randi_range(-1,1)
 	offset.x = 500 * randi_range(-1,1)
 	
@@ -31,7 +21,6 @@ func _show_menu():
 	tween.tween_property(self, "offset", Vector2(0, 0), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 func _hide_menu():
-	resume.disabled = true
 	offset = Vector2(0,0)
 	if tween:
 		tween.kill()
@@ -44,11 +33,9 @@ func _hide_menu():
 	await tween.finished
 	visible = false
 
-func _main_menu():
-	get_tree().quit()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
 
-func _settings_menu():
-	if not settings_menu.visible:
-		settings_menu.showMenu.emit()
-	else:
-		settings_menu.hideMenu.emit()
+func _on_back_button_up():
+	hideMenu.emit()

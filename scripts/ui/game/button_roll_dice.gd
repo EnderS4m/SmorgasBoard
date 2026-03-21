@@ -1,12 +1,16 @@
 extends TextureButton
 signal rollDice()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var dice = find_child("Dice")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	pass
+
 func _process(_delta):
+	if dice.curState == dice.state.ROLLING:
+		disabled = true
+	elif dice.curState == dice.state.IDLE:
+		disabled = false
 	pass
 
 func _on_pressed():

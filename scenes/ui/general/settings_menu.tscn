@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=3 uid="uid://h3bijp2barco"]
+
+[ext_resource type="Theme" uid="uid://ddofu4jxronpk" path="res://assets/theme/in_game_ui.tres" id="1_v8vw6"]
+[ext_resource type="Script" uid="uid://cf0yl6wf1xa" path="res://scripts/ui/general/settings_menu.gd" id="1_y10a8"]
+[ext_resource type="Texture2D" uid="uid://bq4oyv7oshv4j" path="res://assets/sprites/ui/Atlas/ui_atlas.png" id="2_j61i8"]
+[ext_resource type="Script" uid="uid://cyp34t5qosd0g" path="res://scripts/ui/general/aspect_ratio_list.gd" id="3_e3u0q"]
+[ext_resource type="Script" uid="uid://cwyp5h383ahs3" path="res://scripts/ui/general/fast_dice_roll.gd" id="3_v1yry"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e3u0q"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 5.0942163
+texture_margin_top = 5.054726
+texture_margin_right = 4.9809856
+texture_margin_bottom = 11.998549
+region_rect = Rect2(0, 80, 64, 64)
+
+[sub_resource type="Theme" id="Theme_v1yry"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1yry"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 3.9825764
+texture_margin_top = 3.9910963
+texture_margin_right = 3.9919264
+texture_margin_bottom = 8.000347
+region_rect = Rect2(80, 96, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ificn"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 3.9827652
+texture_margin_top = 3.997867
+texture_margin_right = 3.9882176
+texture_margin_bottom = 4.0004134
+region_rect = Rect2(80, 144, 64, 28)
+modulate_color = Color(0.73, 0.73, 0.73, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pk6ba"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 4.067634
+texture_margin_top = 4.067634
+texture_margin_right = 3.9576979
+texture_margin_bottom = 7.6955237
+region_rect = Rect2(80, 96, 64, 32)
+modulate_color = Color(1.0789914, 1.0789914, 1.0789914, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j61i8"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 8.390472
+texture_margin_top = 8.914877
+texture_margin_right = 10.160337
+texture_margin_bottom = 11.340248
+region_rect = Rect2(80, 96, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y10a8"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 3.9825764
+texture_margin_top = 3.9910963
+texture_margin_right = 3.9919264
+texture_margin_bottom = 8.000347
+region_rect = Rect2(80, 96, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxm27"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 3.9827652
+texture_margin_top = 3.997867
+texture_margin_right = 3.9882176
+texture_margin_bottom = 4.0004134
+region_rect = Rect2(80, 144, 64, 28)
+modulate_color = Color(0.73, 0.73, 0.73, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgnri"]
+texture = ExtResource("2_j61i8")
+texture_margin_left = 4.067634
+texture_margin_top = 4.067634
+texture_margin_right = 3.9576979
+texture_margin_bottom = 7.6955237
+region_rect = Rect2(80, 96, 64, 32)
+modulate_color = Color(1.0789914, 1.0789914, 1.0789914, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ificn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="SettingsMenu" type="CanvasLayer"]
+script = ExtResource("1_y10a8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -156.0
+offset_right = 207.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+theme = ExtResource("1_v8vw6")
+theme_override_styles/panel = SubResource("StyleBoxTexture_e3u0q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MenuTitle" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = SubResource("Theme_v1yry")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="FastDiceRoll" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_v1yry")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ificn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pk6ba")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_j61i8")
+text = "Fast Dice Roll
+"
+alignment = 1
+script = ExtResource("3_v1yry")
+
+[node name="AspectRatioLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = SubResource("Theme_v1yry")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Aspect Ratio"
+horizontal_alignment = 1
+
+[node name="AspectRatioList" type="OptionButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+selected = 3
+item_count = 4
+popup/item_0/text = "640x360"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1920x1080"
+popup/item_2/id = 2
+popup/item_3/text = "2560x1440"
+popup/item_3/id = 3
+script = ExtResource("3_e3u0q")
+
+[node name="Back" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_v8vw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_y10a8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxm27")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kgnri")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ificn")
+text = "Back"
+
+[connection signal="toggled" from="PanelContainer/VBoxContainer/FastDiceRoll" to="PanelContainer/VBoxContainer/FastDiceRoll" method="_on_toggled"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/AspectRatioList" to="PanelContainer/VBoxContainer/AspectRatioList" method="_on_item_selected"]
+[connection signal="button_up" from="PanelContainer/VBoxContainer/Back" to="." method="_on_back_button_up"]

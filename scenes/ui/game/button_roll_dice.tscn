@@ -23,6 +23,7 @@ focus_mode = 0
 texture_normal = ExtResource("1_p58nv")
 texture_pressed = ExtResource("2_7f4nn")
 texture_hover = ExtResource("3_j0rwr")
+texture_disabled = ExtResource("2_7f4nn")
 script = ExtResource("2_7fe2k")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

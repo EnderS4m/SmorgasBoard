@@ -3,35 +3,38 @@ extends Node
 var config = ConfigFile.new()
 var configPath = "user://config.cfg"
 
-var WINDOW_SIZE: Dictionary = {
-	"SMALL": Vector2i(640,360),
-	"MEDIUM": Vector2i(1280, 720),
-	"LARGE": Vector2i(1920, 1080),
-	"CHUNKY": Vector2i(2560,1440)
-}
+var WINDOW_SIZE: Array = [
+	Vector2i(640,360),
+	Vector2i(1280, 720),
+	Vector2i(1920, 1080),
+	Vector2i(2560,1440)
+]
 
-var curSize: int = 0
+var curSize: int
 
-var fullscreen: bool = false
+var fullscreen: bool
 
-# Called when the node enters the scene tree for the first time.
+var fastDiceRoll: bool
+
 func _ready():
-	curSize = 3
-	get_window().set_size(WINDOW_SIZE.values()[curSize])
-	get_window().move_to_center()
 	
-	config.set_value("settings","window_size",WINDOW_SIZE.values()[curSize])
-	config.set_value("settings","fullscreen",fullscreen)
-	
-	config.save(configPath)
+	if not FileAccess.file_exists(configPath):
+		config.set_value("settings","window_size",WINDOW_SIZE[3])
+		config.set_value("settings","cur_size",3)
+		config.set_value("settings","fast_dice_roll",false)
+		
+		config.save(configPath)
+	else:
+		config.load(configPath)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	windowSizeSetting()
 
 func windowSizeSetting():
-	if Input.is_action_just_pressed("ui_accept"):
-		curSize += 1
-		curSize = curSize % 4
-		get_window().set_size(WINDOW_SIZE.values()[curSize])
-		get_window().move_to_center()
+	get_window().set_size(config.get_value("settings","window_size"))
+	get_window().move_to_center()
+	#if Input.is_action_just_pressed("ui_accept"):
+		#curSize += 1
+		#curSize = curSize % 4
+		#get_window().set_size(WINDOW_SIZE.values()[curSize])
+		#get_window().move_to_center()

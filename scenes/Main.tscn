@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dug2kgqgvg4bu"]
+[gd_scene load_steps=6 format=3 uid="uid://dug2kgqgvg4bu"]
 
 [ext_resource type="PackedScene" uid="uid://1vm1vmbay2x7" path="res://scenes/entity/player_piece.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://dhro8ynh38ub0" path="res://scenes/utility/camera_system.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://bsfgxdg0pdvwy" path="res://scenes/board/space_spawner.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://h3bijp2barco" path="res://scenes/ui/general/settings_menu.tscn" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://c82jq644xg2g1" path="res://scenes/ui/game/in_game_ui.tscn" id="7_nxtc6"]
 
 [node name="Main" type="Node2D"]
@@ -14,5 +15,9 @@
 [node name="SpaceSpawner" parent="." instance=ExtResource("4_rarhs")]
 
 [node name="InGameUI" parent="." instance=ExtResource("7_nxtc6")]
+
+[node name="SettingsMenu" parent="." instance=ExtResource("5_vcsgt")]
+layer = 9999
+visible = false
 
 [connection signal="player_home" from="PlayerPiece" to="CameraSystem" method="_on_player_home_update"]
